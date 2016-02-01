@@ -31,14 +31,17 @@ prompt=['******Data Analysis Suite*******\n'...
 
 function singleVar()
 fprintf('You have chosen to do Single Variable analysis\n');
-getData()
-calcStatsSingle()
+d = getData(1)
+%getData()
+calcStatsSingle(d)
 
 function hypnoTest()
 fprintf('You have chose to carry out Hypothesis Testing\n');
-getData()
-selectTest()
+d = getData(2)
+%getData()
+selectTest(d)
 
 function regression()
 fprintf('You have chosen Regression\n');
-analyse()
+[data1 data2] = getData(2)
+analyse(data1, data2)
