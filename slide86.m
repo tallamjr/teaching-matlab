@@ -1,18 +1,18 @@
 %read in the results data - you need both the text elements and the numeric elements
 
-[]=xlsread()
+[num text]=xlsread('results.xlsx');
 
 %extract the maths, english and history data into vectors
 %this data is in the numeric part of the result of xslread
 
-maths=
-english=
-history=
+[maths]=xlsread('results.xlsx', 'D2:D31');
+[english]=xlsread('results.xlsx', 'E2:E31');
+[history]=xlsread('results.xlsx', 'F2:F31');
 
 %find the length of each these vectors - this is the N, the number of observations in the data
 %you can get it be examining just *one* vector
-dims=size()
-n=dims()
+dims=size(maths) % Since english and history vectors are the same length
+n=dims(1)
 
 %display the value of N
 %use fprintf
@@ -33,17 +33,21 @@ n=dims()
 %X Hexadecimal notation (using uppercase letters A–F)
 
 %so
-%fprintf('The number of observations is %d',x)
+fprintf('The number of observations is %d \n',n)
 %would replace %d in the string with the value of x and display it as a signed decimal
 
 %find the mean maths result by summing maths and dividing by n
 
-meanmaths= sum()/m;
+meanmaths= sum(maths)/n;
 
 %display "the value of the mean is...."
+fprintf('the value of the mean is:  %f \n',meanmaths)
 
 %find the mean examination score (ie for english, history and maths tests) for the first pupil in your data
+pupilone= [maths(1), english(1), history(1)];
+meanexam= sum(pupilone)/length(pupilone);
 
 %display "the first pupil had a mean test score of..."
+fprintf('the value of the mean exam score for the first pupil is:  %f \n',meanexam)
 
 %rest, relax
